@@ -34,7 +34,7 @@ def maximum_path(neg_cent, mask):
     return torch.from_numpy(path).to(device=device, dtype=dtype)
 
 
-@numba.jit(nopython=True, boundscheck=False, parallel=True)
+@numba.jit(nopython=True, boundscheck=False, parallel=False)
 def maximum_path_each(path, value, t_y: int, t_x: int, max_neg_val=-1e9):
     """
     Args:
@@ -67,7 +67,7 @@ def maximum_path_each(path, value, t_y: int, t_x: int, max_neg_val=-1e9):
             index = index - 1
 
 
-@numba.jit(nopython=True, boundscheck=False, parallel=True)
+@numba.jit(nopython=True, boundscheck=False, parallel=False)
 def maximum_path_c(paths, values, t_ys, t_xs):
     """
     Args:
